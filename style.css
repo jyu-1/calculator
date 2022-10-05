@@ -1,6 +1,10 @@
 body {
     margin: 0;
     padding: 0;
+    display:flex;
+    justify-content: center;
+    margin: 100px;
+    background-color: #D0F7FF;
 }
 
 .container {
@@ -46,4 +50,10 @@ body {
 button {
     height: 75px;
     background-color: lightgray;
+}
+
+footer {
+    bottom: 0;
+    position: fixed;
+    margin: 10px;
 }
