@@ -1,5 +1,6 @@
 let firstNum = "";
 let secondNum = "";
+let currentOperator = "";
 
 const displayTop = document.querySelector("#display1");
 const displayBot = document.querySelector("#display2");
@@ -9,8 +10,16 @@ buttons.forEach(button => {
     button.addEventListener("click", () => {
         switch (button.id) {
             case "button-reset":
+                firstNum = "";
+                secondNum = "";
+                currentOperator = "";
+                displayOne(firstNum, currentOperator);
+                displayTwo(firstNum);
                 break;
             case "button-delete":
+                firstNum = firstNum.slice(0, -1);
+                console.log(firstNum);
+                displayBot.textContent = firstNum;
                 break;
             case "button1":
                 displayTwo("1");
@@ -43,25 +52,40 @@ buttons.forEach(button => {
                 displayTwo("0");
                 break;
             case "button-divide":
+                secondNum = firstNum;
+                firstNum = "";
+                currentOperator = "÷";
+                displayOne(secondNum, currentOperator);
                 break;
             case "button-multiply":
+                secondNum = firstNum;
+                firstNum = "";
+                currentOperator = "x";
+                displayOne(secondNum, currentOperator);
                 break;
             case "button-minus":
+                secondNum = firstNum;
+                firstNum = "";
+                currentOperator = "-";
+                displayOne(secondNum, currentOperator);
                 break;
             case "button-plus":
+                secondNum = firstNum;
+                firstNum = "";
+                currentOperator = "+";
+                displayOne(secondNum, currentOperator);
                 break;
             case "button-decimal":
                 break;
             case "button-equal":
+                operate(firstNum, secondNum, currentOperator);
                 break;
-
-
         }
     })
 })
 
-function displayOne(number) {
-    displayTop.textContent = firstNum;
+function displayOne(number, operator) {
+    displayTop.textContent = number + " " + operator;
 }
 
 function displayTwo(number) {
@@ -69,39 +93,43 @@ function displayTwo(number) {
     displayBot.textContent = firstNum;
 }
 
-function getInput() {
-
-}
-
 function add(a, b) {
-    return (a + b);
+    let temp = b + a;
+    console.log(temp);
+    return temp;
 }
 
 function subtract(a, b) {
-    return (a - b);
+    let temp = b - a;
+    console.log(temp);
+    return temp;
 }
 
 function multiply(a, b) {
-    return (a * b);
+    let temp = b * a;
+    console.log(temp);
+    return temp;
 }
 
 function divide(a, b) {
-    return (a / b);
+    let temp = b / a;
+    console.log(temp);
+    return temp;
 }
 
 function operate(a, b, operator) {
     switch (operator) {
         case "+":
-            add(a, b);
+            displayOne(add(parseFloat(a), parseFloat(b)));
             break;
         case "-":
-            subtract(a, b);
+            displayOne(subtract(parseFloat(a), parseFloat(b)));
             break;
-        case "*":
-            multiply(a, b);
+        case "x":
+            displayOne(multiply(parseFloat(a), parseFloat(b)));
             break;
-        case "/":
-            divide(a, b);
+        case "÷":
+            displayOne(divide(parseFloat(a), parseFloat(b)));
             break;
     }
 }
