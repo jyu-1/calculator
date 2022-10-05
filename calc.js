@@ -13,12 +13,11 @@ buttons.forEach(button => {
                 firstNum = "";
                 secondNum = "";
                 currentOperator = "";
-                displayOne(firstNum, currentOperator);
-                displayTwo(firstNum);
+                displayTop.textContent = "";
+                displayBot.textContent = "";
                 break;
             case "button-delete":
                 firstNum = firstNum.slice(0, -1);
-                console.log(firstNum);
                 displayBot.textContent = firstNum;
                 break;
             case "button1":
@@ -78,6 +77,7 @@ buttons.forEach(button => {
             case "button-decimal":
                 break;
             case "button-equal":
+                displayTop.textContent = secondNum + " " + currentOperator + " " + firstNum;
                 operate(firstNum, secondNum, currentOperator);
                 break;
         }
@@ -91,6 +91,10 @@ function displayOne(number, operator) {
 function displayTwo(number) {
     firstNum += number;
     displayBot.textContent = firstNum;
+}
+
+function displayAnswer(number){
+    displayBot.textContent = number;
 }
 
 function add(a, b) {
@@ -120,16 +124,16 @@ function divide(a, b) {
 function operate(a, b, operator) {
     switch (operator) {
         case "+":
-            displayOne(add(parseFloat(a), parseFloat(b)));
+            displayAnswer(add(parseFloat(a), parseFloat(b)));
             break;
         case "-":
-            displayOne(subtract(parseFloat(a), parseFloat(b)));
+            displayAnswer(subtract(parseFloat(a), parseFloat(b)));
             break;
         case "x":
-            displayOne(multiply(parseFloat(a), parseFloat(b)));
+            displayAnswer(multiply(parseFloat(a), parseFloat(b)));
             break;
         case "÷":
-            displayOne(divide(parseFloat(a), parseFloat(b)));
+            displayAnswer(divide(parseFloat(a), parseFloat(b)));
             break;
     }
 }
