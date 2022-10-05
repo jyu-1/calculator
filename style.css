@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    display:flex;
+    display: flex;
     justify-content: center;
     margin: 100px;
     background-color: #D0F7FF;
@@ -21,6 +21,7 @@ body {
     margin-bottom: 10px;
     display: grid;
     grid-template-columns: 1fr;
+    font-size: 40px;
 }
 
 .subdisplay {
@@ -49,6 +50,7 @@ body {
 
 button {
     height: 75px;
+    font-size: 25px;
     background-color: lightgray;
 }
 
